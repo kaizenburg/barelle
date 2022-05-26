@@ -49,7 +49,11 @@ class BannerController extends Controller
 
         $location = public_path('storage/banners/' . $picture);
         Image::make($request->picture)->resize(1440,720)->save($location);
-      
+      if($request->order > 10){
+          return response()->json([
+              'message' => "there's only 9 banners"
+          ]);
+      }
         $banner = Banner::create([
             "title" => $request->title,
             "link" => $request->link,

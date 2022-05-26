@@ -3960,7 +3960,7 @@ __webpack_require__.r(__webpack_exports__);
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Something is wrong here !'
+            text: res.data.message
           });
         }
       })["catch"](function (err) {

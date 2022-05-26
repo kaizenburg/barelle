@@ -261,7 +261,7 @@ export default {
                         Swal.fire({
   icon: 'error',
   title: 'Oops...',
-  text: 'Something is wrong here !',
+  text: res.data.message,
  
 });
                     }
