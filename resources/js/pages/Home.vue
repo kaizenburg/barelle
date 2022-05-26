@@ -82,13 +82,12 @@
                     <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
                     </ol>   
                     <!-- Wrapper for carousel items -->
                     <div class="carousel-inner">
                         <div v-for="(i,n) in 2" :key="i" class="item carousel-item" :class="i == 1  ? 'active' : ''">
                             <div class="row">
-                                <div class="col-sm-3" v-for="(product,index) in featured" :key="index" v-if="index != 4 || 8">
+                                <div class="col-sm-3" v-for="(product,index) in featured" :key="index" v-if="index < i * 2 ">
                                     <div class="thumb-wrapper">
                                         <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
                                         <div class="img-box">
@@ -127,7 +126,7 @@
         <h2 class="mb-4">Categories</h2>
         <div class="row">
             <div v-for="category in categories.slice(0.3)" :key="category.id" class="col-md-4 col-sm-6">
-                <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
+                <div class="card mb-30"><a class="card-img-tiles" h ref="#" data-abc="true">
                         <div class="inner">
                             <div class="main-img"><img :src="'/storage/products/' + category.image" alt="Category"></div>
                  </div>
@@ -163,8 +162,8 @@
         <div class="container">
           <h2>Best Selling Products</h2>
 
-          <div v-for="n in 2" class="row">
-            <div  v-for="(product,index) in best_selling" :key="index" v-if="index != 4" class="col-lg-3 col-md-6 col-sm-6 col-6">
+          <div  class="row">
+            <div  v-for="(product,index) in best_selling" :key="index" v-if="index < 8" class="col-lg-3 col-md-6 col-sm-6 col-6">
               <div class="wsk-cp-product">
           <div class="wsk-cp-img"><img :src="'/storage/products/' + product.image" alt="Product" class="img-responsive" /></div>
           <div class="wsk-cp-text">
@@ -226,7 +225,7 @@
                     <div class="carousel-inner">
                         <div v-for="(i,n) in 2" :key="i" class="item carousel-item" :class="i == 1  ? 'active' : ''">
                             <div class="row">
-                                <div class="col-sm-3" v-for="(product,index) in products" :key="index" v-if="index != 4 || 8">
+                                <div class="col-sm-3" v-for="(product,index) in products" :key="index" v-if="index < i * 2">
                                     <div class="thumb-wrapper">
                                         <div class="img-box">
                                             <img :src="'/storage/products/' + product.image"  class="img-fluid" alt="">									

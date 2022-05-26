@@ -4272,7 +4272,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
  // optional style for arrows & dots
 
@@ -45471,7 +45470,7 @@ var render = function () {
                           "div",
                           { staticClass: "row" },
                           _vm._l(_vm.featured, function (product, index) {
-                            return index != 4 || 8
+                            return index < i * 2
                               ? _c(
                                   "div",
                                   { key: index, staticClass: "col-sm-3" },
@@ -45549,7 +45548,7 @@ var render = function () {
                                     ),
                                   ]
                                 )
-                              : 0
+                              : _vm._e()
                           }),
                           0
                         ),
@@ -45584,8 +45583,10 @@ var render = function () {
                 _c(
                   "a",
                   {
+                    ref: "#",
+                    refInFor: true,
                     staticClass: "card-img-tiles",
-                    attrs: { href: "#", "data-abc": "true" },
+                    attrs: { h: "", "data-abc": "true" },
                   },
                   [
                     _c("div", { staticClass: "inner" }, [
@@ -45662,96 +45663,85 @@ var render = function () {
     _c("hr"),
     _vm._v(" "),
     _c("div", { staticClass: "shell" }, [
-      _c(
-        "div",
-        { staticClass: "container" },
-        [
-          _c("h2", [_vm._v("Best Selling Products")]),
-          _vm._v(" "),
-          _vm._l(2, function (n) {
-            return _c(
-              "div",
-              { staticClass: "row" },
-              _vm._l(_vm.best_selling, function (product, index) {
-                return index != 4
-                  ? _c(
-                      "div",
-                      {
-                        key: index,
-                        staticClass: "col-lg-3 col-md-6 col-sm-6 col-6",
-                      },
-                      [
-                        _c("div", { staticClass: "wsk-cp-product" }, [
-                          _c("div", { staticClass: "wsk-cp-img" }, [
-                            _c("img", {
-                              staticClass: "img-responsive",
-                              attrs: {
-                                src: "/storage/products/" + product.image,
-                                alt: "Product",
+      _c("div", { staticClass: "container" }, [
+        _c("h2", [_vm._v("Best Selling Products")]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.best_selling, function (product, index) {
+            return index < 8
+              ? _c(
+                  "div",
+                  {
+                    key: index,
+                    staticClass: "col-lg-3 col-md-6 col-sm-6 col-6",
+                  },
+                  [
+                    _c("div", { staticClass: "wsk-cp-product" }, [
+                      _c("div", { staticClass: "wsk-cp-img" }, [
+                        _c("img", {
+                          staticClass: "img-responsive",
+                          attrs: {
+                            src: "/storage/products/" + product.image,
+                            alt: "Product",
+                          },
+                        }),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "wsk-cp-text" }, [
+                        _c("div", { staticClass: "category" }, [
+                          _c("span", [_vm._v(_vm._s(product.subcategory))]),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "title-product" }, [
+                          _c("h3", [_vm._v(_vm._s(product.name) + " ")]),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-footer" }, [
+                          _c("div", { staticClass: "wcf-left" }, [
+                            _c("span", { staticClass: "price" }, [
+                              _vm._v(_vm._s(product.sale_price) + "MAD"),
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                staticClass:
+                                  "text-decoration-line-through text-muted",
                               },
-                            }),
+                              [_vm._v(_vm._s(product.regular_price) + "MAD")]
+                            ),
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "wsk-cp-text" }, [
-                            _c("div", { staticClass: "category" }, [
-                              _c("span", [_vm._v(_vm._s(product.subcategory))]),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "title-product" }, [
-                              _c("h3", [_vm._v(_vm._s(product.name) + " ")]),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "card-footer" }, [
-                              _c("div", { staticClass: "wcf-left" }, [
-                                _c("span", { staticClass: "price" }, [
-                                  _vm._v(_vm._s(product.sale_price) + "MAD"),
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "span",
-                                  {
-                                    staticClass:
-                                      "text-decoration-line-through text-muted",
+                          _c("div", { staticClass: "wcf-right" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "buy-btn",
+                                attrs: {
+                                  "data-toggle": "modal",
+                                  "data-target": "#exampleModal3",
+                                },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.getProduct(product.slug)
                                   },
-                                  [
-                                    _vm._v(
-                                      _vm._s(product.regular_price) + "MAD"
-                                    ),
-                                  ]
-                                ),
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "wcf-right" }, [
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "buy-btn",
-                                    attrs: {
-                                      "data-toggle": "modal",
-                                      "data-target": "#exampleModal3",
-                                    },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.getProduct(product.slug)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v(" Add to cart")]
-                                ),
-                              ]),
-                            ]),
+                                },
+                              },
+                              [_vm._v(" Add to cart")]
+                            ),
                           ]),
                         ]),
-                      ]
-                    )
-                  : _vm._e()
-              }),
-              0
-            )
+                      ]),
+                    ]),
+                  ]
+                )
+              : _vm._e()
           }),
-        ],
-        2
-      ),
+          0
+        ),
+      ]),
     ]),
     _vm._v(" "),
     _c("hr"),
@@ -45812,7 +45802,7 @@ var render = function () {
                           "div",
                           { staticClass: "row" },
                           _vm._l(_vm.products, function (product, index) {
-                            return index != 4 || 8
+                            return index < i * 2
                               ? _c(
                                   "div",
                                   { key: index, staticClass: "col-sm-3" },
@@ -45888,7 +45878,7 @@ var render = function () {
                                     ),
                                   ]
                                 )
-                              : 0
+                              : _vm._e()
                           }),
                           0
                         ),
@@ -46234,10 +46224,6 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("li", {
         attrs: { "data-target": "#myCarousel", "data-slide-to": "1" },
-      }),
-      _vm._v(" "),
-      _c("li", {
-        attrs: { "data-target": "#myCarousel", "data-slide-to": "2" },
       }),
     ])
   },
