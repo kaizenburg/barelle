@@ -10,7 +10,11 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
+<<<<<<< HEAD
         "APP_URL": "https://laravel-barelle.vercel.com",
+=======
+        "APP_URL": "https://barelle.vercel.com",
+>>>>>>> 74a2d855586f135e404bf50a8bcd8bceed71584d
 
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
