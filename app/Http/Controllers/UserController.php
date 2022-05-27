@@ -7,6 +7,8 @@ use Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StoreUserRequest;
+
 use App\Http\Resources\User\UserResource;
 class UserController extends Controller
 {
@@ -14,7 +16,7 @@ class UserController extends Controller
     {
         return Auth::guard();
     }
-    public function register(Request $request) {
+    public function register(StoreUserRequest $request) {
        
         $user = User::Create([
             'name' => $request->name,
@@ -27,10 +29,11 @@ class UserController extends Controller
         ]);
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        $user->sendEmailVerificationNotification();
+       
         $this->guard()->login($user);
 
         return response()->json(['message' => 'Account created successfully', 'logged' => true, 'token' => $token], 200);
+        $user->sendEmailVerificationNotification();
     }
     public function login(Request $request)
     {
