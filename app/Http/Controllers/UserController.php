@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         return Auth::guard();
     }
-    public function register(StoreUserRequest $request) {
+    public function register(Request $request) {
        
         $user = User::Create([
             'name' => $request->name,
