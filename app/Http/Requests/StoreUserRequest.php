@@ -26,7 +26,7 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => "required|string|unique:users,name",
             'email' => "required|email|unique:users,email",
-            'phone' => "required|unique:users,^hp,e",
+            'phone' => "required|unique:users",
             
 
         ];
@@ -34,7 +34,7 @@ class StoreUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'The name field can not be blank value',
+            'name.required' => 'The name field cannot be blank value',
 
             
         ];

@@ -78,25 +78,32 @@
         </div>
         
         <div class="product-info ">
+   
             <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                   <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
                 </li>
-               
+   <!--            
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews</a>
                 </li>
+                -->
               </ul>
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                     {{this.product.description}}
                 </div>
-                <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">...</div>
+<!--                <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">...</div>
+-->
               </div>
               </div>
-    </div>
+             
+             <hr>
+    
+          </div>
     
 </div>
+
 <div class="shell">
     <div class="container">
       <h2>Related Products</h2>
@@ -250,6 +257,8 @@ export default {
               localStorage.setItem('cart', mycart);
               this.viewCart();
             },
+            
+
             viewCart()
             {
               if(localStorage.getItem('cart')) {

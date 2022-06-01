@@ -72,24 +72,14 @@
     </section>
     <hr>
 
- <section class="products">
-        <div class="container-xl">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Featured Products</h2>
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-                    <!-- Carousel indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                    </ol>   
-                    <!-- Wrapper for carousel items -->
-                    <div class="carousel-inner">
-                        <div v-for="(i,n) in 2" :key="i" class="item carousel-item" :class="i == 1  ? 'active' : ''">
-                            <div class="row">
-                                <div class="col-sm-3" v-for="(product,index) in featured" :key="index" v-if="index < i * 2 ">
-                                    <div class="thumb-wrapper">
-                                        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+  
+     <section class="products">
+       <h2 >Featured Product</h2>
+        <div class="container">
+             <carousel :per-page="4">
+    <slide v-for="(product,index) in featured" :key="index">
+    <div class="item">
+    <div class="thumb-wrapper">
                                         <div class="img-box">
                                             <img :src="'/storage/products/' + product.image"  class="img-fluid" alt="">									
                                         </div>
@@ -100,50 +90,39 @@
                                             <a data-toggle="modal" data-target="#exampleModal3" @click="getProduct(product.slug)" class="btn btn-primary">Add to Cart</a>
                                         </div>						
                                     </div>
-                                </div>
-                               
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <!-- Carousel controls -->
-                    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
-                </div>
-            </div>
+                                    </div>
+    </slide>
+   
+  </carousel>
         </div>
 
         
     </section>
 
+   <h2 class="text-center my-4">Categories</h2>
+ 
+    <div class="container my-4">
+    <div class="row mt-2 g-4">
+        <div class="col-md-3" v-for="category in categories.slice(0.8)" :key="category.id" >
+            <div class="card p-1">
+              <router-link :to="{ name: 'browseByCategory', params: {category: category.id} }">
+                <div class="d-flex justify-content-between align-items-center p-2">
+                    <div class="flex-column lh-1 imagename"> {{category.name}} </div>
+                   
 
-    <div class="categories container mt-100">
-        <h2 class="mb-4">Categories</h2>
-        <div class="row">
-            <div v-for="category in categories.slice(0.3)" :key="category.id" class="col-md-4 col-sm-6">
-                <div class="card mb-30"><a class="card-img-tiles" h ref="#" data-abc="true">
-                        <div class="inner">
-                            <div class="main-img"><img :src="'/storage/products/' + category.image" alt="Category"></div>
-                 </div>
-                    </a>
-                    <div class="card-body text-center">
-                        <h4 class="card-title">{{category.name}}</h4>
-                        <p class="text-muted">{{category.products}} Products</p><router-link :to="{ name: 'browseByCategory', params: {category: category.id} }" class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</router-link>
-                    </div>
+                    <div> <img :src="'/storage/products/' + category.image" height="100" width="100" /> </div>
+                    
                 </div>
+                </router-link>
+                 <small class="text-muted mx-4">{{category.products}} Products</small>
             </div>
-           
         </div>
+      
+    </div>
     </div>
 
-
+<hr>
    <section class="banners mt-2">
-        <div class="container">
         <div  class="row">
             <div v-for="banner in banners" :key="banner.order" class="col-4">
               <div  v-if="banner.order == 4 || banner.order == 5 || banner.order == 6" class="banner-img" >
@@ -153,7 +132,6 @@
             </div>
          
            
-        </div>
         </div>
     </section>
     <hr>
@@ -193,7 +171,6 @@
 
       <hr>
       <section class="banners mt-2">
-        <div class="container">
         <div  class="row">
             <div v-for="banner in banners" :key="banner.order" class="col-4">
               <div  v-if="banner.order > 6" class="banner-img" >
@@ -204,29 +181,16 @@
          
            
         </div>
-        </div>
     </section>
       <hr>
+      
      <section class="products">
-        <div class="container-xl">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Our Collection</h2>
-                    <div id="ssCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-                    <!-- Carousel indicators -->
-                    <!--
-                    <ol class="carousel-indicators">
-                        <li data-target="#ssCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#ssCarousel" data-slide-to="1"></li>
-                        <li data-target="#ssCarousel" data-slide-to="2"></li>
-                    </ol>
-                    -->   
-                    <!-- Wrapper for carousel items -->
-                    <div class="carousel-inner">
-                        <div v-for="(i,n) in 2" :key="i" class="item carousel-item" :class="i == 1  ? 'active' : ''">
-                            <div class="row">
-                                <div class="col-sm-3" v-for="(product,index) in products" :key="index" v-if="index < i * 2">
-                                    <div class="thumb-wrapper">
+       <h2 >Our Collection</h2>
+        <div class="container">
+             <carousel :per-page="4">
+    <slide v-for="(product,index) in products" :key="index">
+    <div class="item">
+    <div class="thumb-wrapper">
                                         <div class="img-box">
                                             <img :src="'/storage/products/' + product.image"  class="img-fluid" alt="">									
                                         </div>
@@ -237,23 +201,10 @@
                                             <a data-toggle="modal" data-target="#exampleModal3" @click="getProduct(product.slug)" class="btn btn-primary">Add to Cart</a>
                                         </div>						
                                     </div>
-                                </div>
-                               
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <!-- Carousel controls -->
-                    <a class="carousel-control-prev" href="#ssCarousel" data-slide="prev">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a class="carousel-control-next" href="#ssCarousel" data-slide="next">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
-                
-                </div>
-            </div>
+                                    </div>
+    </slide>
+   
+  </carousel>
         </div>
 
         
@@ -318,8 +269,14 @@
   import 'vue-slick-carousel/dist/vue-slick-carousel.css'
   // optional style for arrows & dots
   import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+  import { Carousel, Slide } from 'vue-carousel';
+
 export default {
-  components: {VueSlickCarousel},
+  components: {
+    VueSlickCarousel,
+    Carousel,
+    Slide
+    },
     data() {
       return {
         featured : {},
